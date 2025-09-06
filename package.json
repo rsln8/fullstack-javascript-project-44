@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/rsln8/fullstack-javascript-project-44/issues"
   },
-  "homepage": "https://github.com/rsln8/fullstack-javascript-project-44#readme"
+  "homepage": "https://github.com/rsln8/fullstack-javascript-project-44#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.3.1",
+    "eslint": "^9.35.0"
+  }
 }
