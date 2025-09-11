@@ -1,32 +1,19 @@
-﻿import readlineSync from 'readline-sync'
+﻿import runGame from '../index.js'
 
 const isEven = (number) => number % 2 === 0
 
-const generateQuestion = () => {
+const generateRound = () => {
   const number = Math.floor(Math.random() * 100) + 1
+  const question = String(number)
   const correctAnswer = isEven(number) ? 'yes' : 'no'
-  return { number, correctAnswer }
+
+  return [question, correctAnswer]
 }
 
-const playEvenGame = (name) => {
-  const roundsCount = 3
+const description = 'Answer "yes" if the number is even, otherwise answer "no".'
 
-  for (let i = 0; i < roundsCount; i += 1) {
-    const { number, correctAnswer } = generateQuestion()
-    
-    console.log(`Question: ${number}`)
-    const userAnswer = readlineSync.question('Your answer: ')
-
-    if (userAnswer !== correctAnswer) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`)
-      console.log(`Let's try again, ${name}!`)
-      return
-    }
-
-    console.log('Correct!')
-  }
-
-  console.log(`Congratulations, ${name}!`)
+const runEvenGame = () => {
+  runGame(description, generateRound)
 }
 
-export default playEvenGame
+export default runEvenGame
