@@ -1,6 +1,6 @@
 ﻿import readlineSync from 'readline-sync'
 
-const runGame = (description, generateRound) => {
+const runGame = (description, getQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!')
   const name = readlineSync.question('May I have your name? ')
   console.log(`Hello, ${name}!`)
@@ -10,8 +10,7 @@ const runGame = (description, generateRound) => {
   const roundsCount = 3
 
   for (let i = 0; i < roundsCount; i += 1) {
-    // ИСПРАВЛЕНИЕ: деструктуризация массива вместо объекта
-    const [question, answer] = generateRound()
+    const [question, answer] = getQuestionAndAnswer()
 
     console.log(`Question: ${question}`)
     const userAnswer = readlineSync.question('Your answer: ')
