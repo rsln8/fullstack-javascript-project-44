@@ -1,22 +1,24 @@
 import { getRandomNumber } from '../utils.js'
 
-const getGcd = (a, b) => {
-  if (b === 0) {
-    return a
+const gcd = (a, b) => {
+  while (b !== 0) {
+    const temp = b
+    b = a % b
+    a = temp
   }
-  return getGcd(b, a % b)
+  return a
 }
 
-const getQuestionAndAnswer = () => {
-  const num1 = getRandomNumber(1, 50)
-  const num2 = getRandomNumber(1, 50)
+const generateRound = () => {
+  const a = getRandomNumber(1, 100)
+  const b = getRandomNumber(1, 100)
 
-  const question = `${num1} ${num2}`
-  const answer = String(getGcd(num1, num2))
+  const question = `${a} ${b}`
+  const answer = String(gcd(a, b))
 
-  return [question, answer]
+  return { question, answer }
 }
 
 const description = 'Find the greatest common divisor of given numbers.'
 
-export { getQuestionAndAnswer, description }
+export { generateRound, description }

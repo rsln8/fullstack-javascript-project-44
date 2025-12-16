@@ -1,65 +1,30 @@
-export const final = (result, name) => {
-  if (result) {
-    console.log(`Congratulations, ${name}!`)
-  }
-  else {
-    console.log(`Let's try again, ${name}!`)
-  }
-}
+import readlineSync from 'readline-sync'
 
-export function getRandomInt(max) {
-  return Math.floor(Math.random() * max)
-}
+const runGame = (description, generateRound) => {
+  console.log('Welcome to the Brain Games!')
+  const name = readlineSync.question('May I have your name? ')
+  console.log(`Hello, ${name}!`)
 
-export function getRandomFromRange(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
+  console.log(description)
 
-export function getRandomMathOperator() {
-  const randomNumber = getRandomFromRange(1, 90)
-  let result = ''
+  const roundsCount = 3
 
-  switch (true) {
-    case randomNumber <= 20:
-      result = '+'
-      break
-    case randomNumber <= 40:
-      result = '-'
-      break
-    case randomNumber <= 60:
-      result = '*'
-      break
-    default:
-      result = '+'
+  for (let i = 0; i < roundsCount; i += 1) {
+    const { question, answer } = generateRound()
+
+    console.log(`Question: ${question}`)
+    const userAnswer = readlineSync.question('Your answer: ')
+
+    if (userAnswer !== answer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.`)
+      console.log(`Let's try again, ${name}!`)
+      return
+    }
+
+    console.log('Correct!')
   }
 
-  return result
+  console.log(`Congratulations, ${name}!`)
 }
 
-export function getGCD(a, b) {
-  if (b === 0) {
-    return Math.abs(a)
-  }
-  return getGCD(b, a % b)
-}
-
-export function getProgression() {
-  const resultArray = []
-  const amountRandom = getRandomFromRange(8, 12)
-  const stepRandom = getRandomFromRange(2, 6)
-  let index = 0
-
-  for (let i = 0; i < amountRandom; i++) {
-    index = index + stepRandom
-    resultArray.push(index)
-  }
-
-  return resultArray
-}
-
-export function isPrime(num) {
-  for (let i = 2; i < num; i++) {
-    if (num % i === 0) return 'no'
-  }
-  return 'yes'
-}
+export default runGame
