@@ -19,7 +19,8 @@ const generateRound = () => {
   const question = `${a} ${operator} ${b}`
   const answer = String(calculate(a, b, operator))
 
-  return { question, answer }
+  // ВАЖНО: возвращаем массив, а не объект!
+  return [question, answer]
 }
 
 const description = 'What is the result of the expression?'
