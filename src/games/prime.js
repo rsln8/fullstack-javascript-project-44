@@ -12,15 +12,15 @@ const isPrime = (num) => {
   return true
 }
 
-const generateRound = () => {
+const getQuestionAndAnswer = () => {
   const number = getRandomNumber(2, 100)
 
   const question = String(number)
   const answer = isPrime(number) ? 'yes' : 'no'
 
-  return { question, answer }
+  return [question, answer]
 }
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".'
 
-export { generateRound, description }
+export { getQuestionAndAnswer, description }

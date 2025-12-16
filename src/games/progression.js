@@ -8,7 +8,7 @@ const generateProgression = (start, step, length) => {
   return progression
 }
 
-const generateRound = () => {
+const getQuestionAndAnswer = () => {
   const start = getRandomNumber(1, 50)
   const step = getRandomNumber(2, 10)
   const length = getRandomNumber(5, 10)
@@ -23,9 +23,9 @@ const generateRound = () => {
   const question = progressionWithHidden
   const answer = String(progression[hiddenIndex])
 
-  return { question, answer }
+  return [question, answer]
 }
 
 const description = 'What number is missing in the progression?'
 
-export { generateRound, description }
+export { getQuestionAndAnswer, description }

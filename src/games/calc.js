@@ -11,7 +11,7 @@ const calculate = (a, b, operator) => {
   }
 }
 
-const generateRound = () => {
+const getQuestionAndAnswer = () => {
   const a = getRandomNumber(1, 50)
   const b = getRandomNumber(1, 50)
   const operator = operators[getRandomNumber(0, operators.length - 1)]
@@ -19,10 +19,9 @@ const generateRound = () => {
   const question = `${a} ${operator} ${b}`
   const answer = String(calculate(a, b, operator))
 
-  // ВАЖНО: возвращаем массив, а не объект!
   return [question, answer]
 }
 
 const description = 'What is the result of the expression?'
 
-export { generateRound, description }
+export { getQuestionAndAnswer, description }
